@@ -2,14 +2,10 @@ package javarush.testtask.dao.hibernate;
 
 import javarush.testtask.dao.PartDao;
 import javarush.testtask.model.Part;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,14 +69,15 @@ public class HPartDao implements PartDao {
         List<Part> pageParts = new ArrayList<>();
         if (parts.size() <= offset) {
             return parts;
-        } else if (parts.size() < (offset + pageCount)){
+        } else if (parts.size() < (offset + pageCount)) {
             for (int i = offset; i < parts.size(); i++) {
                 pageParts.add(parts.get(i));
             }
         } else {
             for (int i = offset; i < offset + pageCount; i++) {
                 pageParts.add(parts.get(i));
-            } }
+            }
+        }
         return pageParts;
     }
 

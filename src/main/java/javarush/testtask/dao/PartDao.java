@@ -18,7 +18,7 @@ public interface PartDao {
 
     List<Part> findByRequiredPart(Boolean required);
 
-   List<Part> findByName(String name);
+    List<Part> findByName(String name);
 
     List<Part> getPageUsers(int offset, int pageCount);
 }
